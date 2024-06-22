@@ -31,6 +31,7 @@ for i in range(6):
     channel = servo_channels[i]
     servo_driver.set_pwm(channel, 0, pulse_mapping[i][1])
     time.sleep(1)
+print("pathplanning file excuted")
 
 def BTN_360_set_motor_pwm(index, position, speed=0.5):
     channel = servo_channels[index]
