@@ -86,8 +86,8 @@ def joint_state_callback(msg):
     print(msg.position)
     scale = 180/math.pi
     set_angle(1,msg.position[1]*scale)
-    set_angle(2,msg.position[2]*scale)
-    set_angle(3,msg.position[3]*scale)
+    set_angle(2,0-msg.position[2]*scale)
+    set_angle(3,0-msg.position[3]*scale)
 
 def ps3_controller_callback(msg):
     # /PS3Controller_bools topic에서 수신한 데이터를 처리하는 콜백 함수
