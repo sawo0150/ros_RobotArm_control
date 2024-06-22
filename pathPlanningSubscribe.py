@@ -101,7 +101,7 @@ def ps3_controller_callback(msg):
     4 : [btn_L2, btn_R2],
     5 : [btn_select, btn_Mode]
     }
-    for i in motorEventCode_dic.keys:
+    for i in motorEventCode_dic.keys():
         ec_list = motorEventCode_dic[i]
         if len(ec_list) == 2:
             value1, value2 = ec_list
@@ -119,7 +119,7 @@ def multiple_topic_subscriber():
     rospy.init_node('multiple_topic_subscriber', anonymous=True)
     
     print("main 함수 실행중")
-    # rospy.Subscriber('/plan_Joints', JointState, joint_state_callback, queue_size=10)
+    rospy.Subscriber('/plan_Joints', JointState, joint_state_callback, queue_size=10)
     rospy.Subscriber('/PS3Controller_bools', Int32MultiArray, ps3_controller_callback, queue_size=10)
     
     rospy.spin()
