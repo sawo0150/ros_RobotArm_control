@@ -91,6 +91,7 @@ def joint_state_callback(msg):
 
 def ps3_controller_callback(msg):
     # /PS3Controller_bools topic에서 수신한 데이터를 처리하는 콜백 함수
+    print('ps3controller message 받음')
     print("Received PS3Controller bools: %s", msg.data)
     
     btn_L1,btn_L2,btn_R1,btn_R2,btn_select,btn_Mode  = msg.data
@@ -118,7 +119,7 @@ def multiple_topic_subscriber():
     rospy.init_node('multiple_topic_subscriber', anonymous=True)
     
     print("main 함수 실행중")
-    rospy.Subscriber('/plan_Joints', JointState, joint_state_callback, queue_size=10)
+    # rospy.Subscriber('/plan_Joints', JointState, joint_state_callback, queue_size=10)
     rospy.Subscriber('/PS3Controller_bools', Int32MultiArray, ps3_controller_callback, queue_size=10)
     
     rospy.spin()
