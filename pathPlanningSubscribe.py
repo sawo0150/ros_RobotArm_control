@@ -122,6 +122,7 @@ def multiple_topic_subscriber():
 
 if __name__ == '__main__':
     try:
+        print("main 함수 실행중")
         multiple_topic_subscriber()
 # 메인 스레드에서 모터 제어 로직 실행
     except KeyboardInterrupt:
