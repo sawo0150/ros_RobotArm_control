@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import time
 import threading
 import evdev
@@ -89,8 +91,8 @@ def joint_state_callback(msg):
 
 def ps3_controller_callback(msg):
     # /PS3Controller_bools topic에서 수신한 데이터를 처리하는 콜백 함수
-    rospy.loginfo("Received PS3Controller bools: %s", msg.data)
-    print(msg.data)
+    print("Received PS3Controller bools: %s", msg.data)
+    
     btn_L1,btn_L2,btn_R1,btn_R2,btn_select,btn_Mode  = msg.data
     btn_list = []
     motorEventCode_dic = {
@@ -115,6 +117,7 @@ def ps3_controller_callback(msg):
 def multiple_topic_subscriber():
     rospy.init_node('multiple_topic_subscriber', anonymous=True)
     
+    print("main 함수 실행중")
     rospy.Subscriber('/plan_Joints', JointState, joint_state_callback, queue_size=10)
     rospy.Subscriber('/PS3Controller_bools', Int32MultiArray, ps3_controller_callback, queue_size=10)
     
@@ -122,7 +125,6 @@ def multiple_topic_subscriber():
 
 if __name__ == '__main__':
     try:
-        print("main 함수 실행중")
         multiple_topic_subscriber()
 # 메인 스레드에서 모터 제어 로직 실행
     except KeyboardInterrupt:
