@@ -91,7 +91,7 @@ def joint_state_callback(msg):
 
 def ps3_controller_callback(msg):
     # /PS3Controller_bools topic에서 수신한 데이터를 처리하는 콜백 함수
-    print('ps3controller message 받음')
+    # print('ps3controller message 받음')
     print("Received PS3Controller bools: %s", msg.data)
     
     btn_L1,btn_L2,btn_R1,btn_R2,btn_select,btn_Mode  = msg.data
@@ -105,7 +105,7 @@ def ps3_controller_callback(msg):
         ec_list = motorEventCode_dic[i]
         if len(ec_list) == 2:
             value1, value2 = ec_list
-            print(ec_list, value1, value2)
+            # print(ec_list, value1, value2)
             if value1 == value2:
                 if i !=5:
                     BTN_360_set_motor_pwm(i, 'stop')
